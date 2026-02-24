@@ -4,7 +4,7 @@
             <h1 class="text-xl font-medium text-black">{{ pokemon.name.toUpperCase() }}</h1>
             <button 
               class="bg-sky-600 text-white rounded-lg p-3 border-black" 
-              @click="goToDetail('linkToGetMoreInfo')">
+              @click="goToDetail()">
               Details
             </button>
         </div>
@@ -21,7 +21,7 @@ const props = defineProps({
 });
 
 function goToDetail() {
-  // TODO navigate to the detail page
+    // TODO navigate to the detail page use the getIdFromUrl method to get the id
 }
 
 function getIdFromUrl(url) {

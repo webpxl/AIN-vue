@@ -2,6 +2,7 @@
 <main>
     <h1>Pokemon detail</h1> 
     {{ id }}
+
 </main>
 </template>
 

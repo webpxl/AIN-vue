@@ -3,7 +3,7 @@
         <h1>Parent Element</h1>
         <div class="container">
             <ChildElement v-for="(color,index) in colors" 
-            :key="color" 
+            :key="index" 
             :favouriteColor="color" 
             :name="firstNames[index]" />
         </div>
@@ -26,6 +26,6 @@ const firstNames = ref(['John', 'Jane', 'Joe']);
 </style>
 <!-- 
 // setTimeout(() => {
-//     firstName.value = 'Jane';
+//     firstNames.value[1] = 'Bob';
 // }, 2000);
  -->

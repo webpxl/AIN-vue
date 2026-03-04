@@ -1,19 +1,13 @@
 import { test, expect } from 'vitest'
-
 import { mount } from '@vue/test-utils'
 import TodoList from '../TodoList.vue'
 
-
 test('renders a todo', () => {
-  const wrapper = mount(TodoList)
-
-  const todo = wrapper.get('[data-test="todo"]')
-
-  expect(todo.text()).toBe('Learn Vue 3')
+    const wrapper = mount(TodoList)
+    const todo = wrapper.get('[data-test="todo"]')
+    expect(todo.text()).toBe('1. Learn Vue 3')
 })
 
-
-/*
 test('creates a todo', async () => {
   const wrapper = mount(TodoList)
   expect(wrapper.findAll('[data-test="todo"]')).toHaveLength(1)
@@ -23,9 +17,7 @@ test('creates a todo', async () => {
 
   expect(wrapper.findAll('[data-test="todo"]')).toHaveLength(2)
 })
-*/
 
-/*
 test('completes a todo', async () => {
   const wrapper = mount(TodoList)
 
@@ -33,16 +25,14 @@ test('completes a todo', async () => {
 
   expect(wrapper.get('[data-test="todo"]').classes()).toContain('completed')
 })
-*/
 
-/*
-test('Shows a title when showTitle prop is true', () => {
-  const wrapper = mount(TodoList, {props: {
-    showTitle: true
-  }});
-
+test('shows a title', () => {
+  const wrapper = mount(TodoList, {
+      props: {
+        showTitle: true
+      }
+    });
   // By using `get()` we are implicitly asserting that
   // the element exists.
-  expect(wrapper.get('#title').text()).toEqual('Todos')
+  expect(wrapper.get('[data-test="title"]').text()).toEqual('Todos')
 })
-*/

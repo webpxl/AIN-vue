@@ -9,10 +9,8 @@ describe('EditPerson.vue', () => {
     const wrapper = mount(EditPerson, {
       props: { person }
     })
-
-    expect(wrapper.text()).toContain('id = 1')
     expect(wrapper.text()).toContain('Name: John Doe')
-    expect(wrapper.find('button').text()).toBe('edit')
+    expect(wrapper.find('button').text()).toBe('Edit')
   })
 
   it('shows input field when edit button is clicked', async () => {
@@ -22,7 +20,7 @@ describe('EditPerson.vue', () => {
 
     await wrapper.find('button').trigger('click') 
     expect(wrapper.find('input').exists()).toBe(true)
-    expect(wrapper.find('button').text()).toBe('update') 
+    expect(wrapper.find('button').text()).toBe('Update') 
   })
 
   it('updates name and emits event when update is clicked', async () => {

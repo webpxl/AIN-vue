@@ -35,7 +35,7 @@ describe('Persons Store', () => {
     expect(store.errorMessage).toBe('Request failed with status code 500')
   })
 
-  it('updates a person’s name in the store', async () => {
+  it('updates a person\'s name in the store', async () => {
     store.persons = [{ id: 1, name: 'Alice' }]
     mock.onPut('http://localhost:3000/persons/1').reply(200)
     await store.updateName(1, 'Charlie')

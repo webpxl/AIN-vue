@@ -32,14 +32,12 @@ describe('PersonList.vue', () => {
       { id: 2, name: 'Bob' },
     ]
     const wrapper = mount(PersonList)
-    await wrapper.vm.$nextTick() 
     expect(wrapper.text()).toContain('Alice')
     expect(wrapper.text()).toContain('Bob')
   })
 
   it('calls fetchPersons when button is clicked', async () => {
     const wrapper = mount(PersonList)
-    await wrapper.vm.$nextTick()
     const button = wrapper.find('button')
     await button.trigger('click')
     expect(store.fetchPersons).toHaveBeenCalled()
@@ -52,6 +50,7 @@ describe('PersonList.vue', () => {
     ]
     const wrapper = mount(PersonList)
     const editPersonComponents = wrapper.findAllComponents({ name: 'EditPerson' })
+    // Check: https://v1.test-utils.vuejs.org/api/wrapper/#emitted
     await editPersonComponents.at(0).vm.$emit('update-event', { id: 1, name: 'Charlie' })
     expect(store.updateName).toHaveBeenCalledWith(1, 'Charlie')
   })

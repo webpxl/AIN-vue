@@ -24,7 +24,7 @@ export const usePersonsStore = defineStore('persons', () => {
       const response = await axios.put(`http://localhost:3000/persons/${id}`, { name }); 
       const index = persons.value.findIndex(child => child.id === id);
       if (index !== -1) {
-        persons.value[index] = { ...persons.value[index], name };
+        persons.value[index] = { id, name };
       }
     } catch (e) {
       errorMessage.value = e.message; 

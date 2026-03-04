@@ -1,14 +1,14 @@
 <template>
-  <div class="main">
-    <h2>id = {{person.id}}</h2>
-    
+  <div class="person-edit">
     <div v-if="edit">
-        <label :for="'name-' + person.id">Name: </label> 
-        <input :id="'name-' + person.id" v-model="editName"> 
-        <button @click="update">update</button> 
-        <button @click="cancel">cancel</button>         
+      <input :id="'name-' + person.id" v-model="editName" class="edit-input">
+      <button @click="update" class="btn btn-update">Update</button>
+      <button @click="cancel" class="btn btn-cancel">Cancel</button>
     </div>
-    <div v-else>Name: {{ person.name}} <button @click="startEditing">edit</button>  </div>
+    <div v-else class="display-mode">
+      <span class="person-name">Name: {{ person.name }}</span>
+      <button @click="startEditing" class="btn btn-edit">Edit</button>
+    </div>
   </div>
 </template>
 
@@ -26,7 +26,7 @@ const props = defineProps({
 const editName = ref(props.person.name);
 const edit = ref(false)
 
-watch(() => props.person.name, (newValue) => {      
+watch(() => props.person.name, (newValue) => {
     editName.value = newValue
 });
 
@@ -50,10 +50,58 @@ function startEditing(){
 </script>
 
 <style scoped>
-.main {
-  margin: 10px;
-  padding: 10px;
-  border: 3px solid black;
+.person-edit {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.display-mode {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.person-name {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.edit-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-left: 20px;
+}
+
+.btn-edit {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-update {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-cancel {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.9;
 }
 </style>
 
